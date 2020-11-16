@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="main"></div>
+<div id="main1"></div>
+<div><a  onclick="return csv_download();" href="{{ url_for('static', filename='temp.csv')}}" >Скачать файл в формате CSV</a></div>
+<p>
+    <button type="button" class="btn btn-primary btn-xs stanza_selected" id="stanza"><i class="fa fa-eye"></i> All period </button>
+    <button type="button" class="btn btn-default btn-xs settimanale_button" id="settimanale"> Last 28 days period </button>
+    <button type="button" class="btn btn-default btn-xs mensile_button" id="mensile"> Last 7 days period </button>
+</p>
+
+<canvas id="myChart25"></canvas>
+<script src="static/jquery.min.js"></script>
+<script type="text/javascript" src="static/csvdownload.js"></script>
+<script src="static/Chart.js"></script>
+<script src="static/graph.js"></script>
+<script src="static/div.js"></script>
+
+</body>
+</html>
