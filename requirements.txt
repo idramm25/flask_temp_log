@@ -4,4 +4,5 @@ beautifulsoup4~=4.8.2
 PyMySQL~=0.10.0
 pandas~=1.1.0
 APScheduler==2.1.2
-Flask-SQLAlchemy
+Flask-SQLAlchemy==2.4.4
+lxml==4.6.1

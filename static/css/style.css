@@ -1,0 +1,17 @@
+.status-icon {
+    max-width: 20px;
+    height: 20px;
+    vertical-align: baseline;
+}
+.alert-danger {
+    margin-bottom: 0;
+}
+.alert-info {
+    margin-bottom: 0;
+}
+#asdf {
+    margin-bottom: 1rem;
+}
+#footer {
+    margin: 1rem;
+}

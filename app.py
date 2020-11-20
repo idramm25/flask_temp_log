@@ -1,5 +1,5 @@
-## flask1
-import os
+# flask1
+# import os
 
 from flask import Flask, render_template, jsonify
 from flask import send_from_directory
@@ -77,10 +77,9 @@ def get_head(html):
 
 
 def getparse():
-    data = get_head(get_html('http://192.168.1.155'))
-    intemp, outtemp = data
-    t1 = intemp
-    t2 = outtemp
+    intemp, outtemp = get_head(get_html('http://192.168.1.155'))
+    # t1 = intemp
+    # t2 = outtemp
     t3 = 0
     h1 = 0
     l1 = 0
@@ -92,13 +91,14 @@ def getparse():
 
 
 def getcurrent():
-    URL = 'http://192.168.1.155'
+    url = 'http://192.168.1.155'
     try:
-        data = get_head(get_html(URL))
+        data = get_head(get_html(url))
         intemp, outtemp = data
-        return intemp, outtemp, URL
+        return intemp, outtemp, url
     except:
-        return None, None, URL
+        print("offline")
+        return None, None, url
 
 
 # -----------------------------------------------------------------------------"""
@@ -132,12 +132,8 @@ def iframe():
 
 @app.route('/chart1')
 def chart1():
-    return render_template('chart1.html')
-
-
-@app.route('/chart2')
-def chart2():
-    return render_template('chart2.html')
+    intemp, outtemp, url = getcurrent()
+    return render_template('chart1.html', intemp=intemp, outtemp=outtemp, url=url)
 
 
 @app.route('/getcsv')
