@@ -78,8 +78,6 @@ def get_head(html):
 
 def getparse():
     intemp, outtemp = get_head(get_html('http://192.168.1.155'))
-    # t1 = intemp
-    # t2 = outtemp
     t3 = 0
     h1 = 0
     l1 = 0
