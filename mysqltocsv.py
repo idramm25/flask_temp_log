@@ -1,7 +1,7 @@
-###   Working version   ###
+# ---   Working version   --- #
 
-### MYSQL SELECT QUERY FOR LAST 7 UPDATES ###
-### SELECT in_temp, out_temp, pub_time, pub_date FROM (SELECT * FROM temp ORDER BY id DESC LIMIT 7) t WHERE t.id>10 ORDER BY id; ###
+# --- MYSQL SELECT QUERY FOR LAST 7 UPDATES --- # --- SELECT in_temp, out_temp, pub_time, pub_date FROM (SELECT *
+# FROM temp ORDER BY id DESC LIMIT 7) t WHERE t.id>10 ORDER BY id; --- #
 
 import pymysql
 import pandas as pd
@@ -9,10 +9,10 @@ import sys
 
 
 def mysql_to_csv(sql, file_path, host, user, password, database):
-    '''
+    """
     The function creates a csv file from the result of SQL
     in MySQL database.
-    '''
+    """
     try:
         con = pymysql.connect(host=host, user=user, password=password, database=database)
         print('Connected to DB: {}'.format(host))

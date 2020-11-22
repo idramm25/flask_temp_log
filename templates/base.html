@@ -16,7 +16,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
-{#        <img src="{{ url_for('static', filename='bootstrap-logo.svg') }}" alt="" width="30" height="24" class="d-inline-block align-top">#}
+        {#        <img src="{{ url_for('static', filename='bootstrap-logo.svg') }}" alt="" width="30" height="24" class="d-inline-block align-top">#}
         <a class="navbar-brand" href="#">Navbar</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -39,8 +39,14 @@
 </nav>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Library</li>
+        <div>
+            {%- for breadcrumb in breadcrumbs -%}
+                <a href="{{ breadcrumb.url }}">{{ breadcrumb.text }}</a>
+                {{ '/' if not loop.last }}
+            {%- endfor -%}
+        </div>
+        {#        <li class="breadcrumb-item"><a href="#">Home</a></li>#}
+        {#        <li class="breadcrumb-item active" aria-current="page">Library</li>#}
     </ol>
 </nav>
 <div id="content">{% block content %}{% endblock %}</div>
