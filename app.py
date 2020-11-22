@@ -2,8 +2,9 @@
 
 from flask import Flask, render_template, jsonify
 from flask import send_from_directory
-from flask_breadcrumbs import Breadcrumbs, register_breadcrumb
 from flask_sqlalchemy import *
+from conn import connect
+from flask_breadcrumbs import Breadcrumbs, register_breadcrumb
 from time import strftime
 
 from mysqltojson import getjson
@@ -11,17 +12,14 @@ from mysqltocsv import mysql_to_csv
 
 from flaskr import *
 from apscheduler.scheduler import Scheduler
-
-from conn import connect
 from connSettings import *
 
 app = Flask(__name__, static_url_path='/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin-mysql25@localhost/log_temp_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["CLIENT_JSON"] = "/home/smart-server/projects/flask2/api/get-json"
-Breadcrumbs(app=app)
 db = SQLAlchemy(app)
-
+Breadcrumbs(app=app)
 
 """-----------------------------------------------------------------------------------------------"""
 # Start the scheduler
@@ -56,7 +54,8 @@ class Temp(db.Model):
     pub_time = db.Column(db.String(2), unique=False)
     pub_date = db.Column(db.String(10), unique=False)
 
-    db.create_all()
+
+db.create_all()
 
 
 class SensorsData:
@@ -71,9 +70,8 @@ class SensorsData:
             l1 = 0
             tm = strftime('%H')
             td = strftime('%d/%m/%Y')
-            db.session.add(models.Temp(intemp, outtemp, t3, h1, l1, tm, td))
+            db.session.add(Temp(intemp, outtemp, t3, h1, l1, tm, td))
             db.session.commit()
-            print("OK")
         except ConnectionError as e:
             print(e)
 
