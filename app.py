@@ -76,12 +76,8 @@ class SensorsData:
             print(e)
 
     def getcurrent(self):
-        try:
-            intemp, outtemp = connect(URL)
-            return intemp, outtemp, self.url
-        except ConnectionError as e:
-            print(e)
-            return None, None, self.url
+        intemp, outtemp = connect(URL)
+        return intemp, outtemp, self.url
 
 
 # -----------------------------------------------------------------------------"""
