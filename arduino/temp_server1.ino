@@ -11,7 +11,7 @@ float t;
 ETHER_28J60 ethernet;
 #define ONE_WIRE_BUS_1 9 //   вход датчика 18b20
 OneWire oneWire_in(ONE_WIRE_BUS_1);
-DallasTemperature sensor_inhouse(&oneWire_in);
+DallasTemperature sensor_in_house(&oneWire_in);
 
 
 
@@ -21,7 +21,7 @@ void setup(){
   Serial.begin(9600);
   Serial.println("Temperature WEB server");
   ethernet.setup(mac, ip, port);
-  sensor_inhouse.begin();
+  sensor_in_house.begin();
 }
 
 void loop()
@@ -48,12 +48,12 @@ void loop()
 }
 void get_temp() {
   //Serial.print("Requesting temperatures...");
-   sensor_inhouse.requestTemperatures();
+   sensor_in_house.requestTemperatures();
   //sensor_outhouse.requestTemperatures();
   //Serial.println(" done");
 
   //Serial.print("Inhouse: ");
-  t = sensor_inhouse.getTempCByIndex(0);
+  t = sensor_in_house.getTempCByIndex(0);
   Serial.println(t);
 
   //Serial.print("Outhouse: ");
