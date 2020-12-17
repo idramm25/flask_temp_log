@@ -72,7 +72,6 @@ class SensorsData:
             td = strftime('%d/%m/%Y')
             db.session.add(Temp(intemp, outtemp, t3, h1, l1, tm, td))
             db.session.commit()
-            print("ok")
         else:
             intemp, outtemp = None, None
             t3 = 0
@@ -82,7 +81,9 @@ class SensorsData:
             td = strftime('%d/%m/%Y')
             db.session.add(Temp(intemp, outtemp, t3, h1, l1, tm, td))
             db.session.commit()
-            print(".getparse() fail, intemp and outtemp write to database as '0' and '0'")
+            print("---------------------------------------------------------------------------")
+            print(".getparse() fail, intemp and outtemp write to database as 'None' and 'None'")
+            print("---------------------------------------------------------------------------")
 
 
     def getcurrent(self):
@@ -92,6 +93,9 @@ class SensorsData:
         else:
             intemp = None
             outtemp = None
+            print("-------------------------------------------------------------------")
+            print(".getcurrent() fail, intemp and outtemp defined as 'None' and 'None'")
+            print("-------------------------------------------------------------------")
             return intemp, outtemp, self.url
 
 
