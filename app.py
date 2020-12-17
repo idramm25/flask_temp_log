@@ -63,7 +63,7 @@ class SensorsData:
         self.url = url
 
     def getparse(self):
-        try:
+        if connect(self.url) is not None:
             intemp, outtemp = connect(self.url)
             t3 = 0
             h1 = 0
@@ -72,12 +72,27 @@ class SensorsData:
             td = strftime('%d/%m/%Y')
             db.session.add(Temp(intemp, outtemp, t3, h1, l1, tm, td))
             db.session.commit()
-        except ConnectionError as e:
-            print(e)
+            print("ok")
+        else:
+            intemp, outtemp = None, None
+            t3 = 0
+            h1 = 0
+            l1 = 0
+            tm = strftime('%H')
+            td = strftime('%d/%m/%Y')
+            db.session.add(Temp(intemp, outtemp, t3, h1, l1, tm, td))
+            db.session.commit()
+            print(".getparse() fail, intemp and outtemp write to database as '0' and '0'")
+
 
     def getcurrent(self):
-        intemp, outtemp = connect(URL)
-        return intemp, outtemp, self.url
+        if connect(self.url) is not None:
+            intemp, outtemp = connect(URL)
+            return intemp, outtemp, self.url
+        else:
+            intemp = None
+            outtemp = None
+            return intemp, outtemp, self.url
 
 
 # -----------------------------------------------------------------------------"""

@@ -1,2 +1,2 @@
-URL: str = "http://192.168.1.155"  # Sensor URL
+URL: str = "http://192.168.1.156"  # Sensor URL
 COUNT: int = 30  # logging ratio "minutes"

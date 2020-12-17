@@ -13,4 +13,4 @@ def connect(url):
             heads.append(i.string)
         return heads
     except:
-        return None, None
+        return None
