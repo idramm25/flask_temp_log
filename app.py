@@ -1,4 +1,4 @@
-# flask1
+# flask1 > flask_temp_log
 
 from flask import Flask, render_template, jsonify
 from flask import send_from_directory
